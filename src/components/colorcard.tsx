@@ -17,9 +17,9 @@ const ColorSwatch: React.FC<ColorSwatchProps> = ({
     <div className="color-swatch">
       <div className="color-block" style={{ backgroundColor: hexCode }} />
       <div className="color-info">
-        <div className="pantone-text">FLOW</div>
+        <div className="pantone-text">{colorName}</div>
         <div className="color-code">{colorCode}</div>
-        <div className="color-name">{colorName}</div>
+        <div className="color-name"></div>
       </div>
     </div>
   );
