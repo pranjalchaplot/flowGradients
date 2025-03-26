@@ -100,23 +100,6 @@
   pointer-events: auto;
 }
 
-.color-swatch {
-  width: 250px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.color-block {
-  height: 200px;
-  width: 100%;
-}
-
-.color-info {
-  padding: 10px;
-}
-
 .pantone-text {
   font-weight: bold;
   font-size: 14px;
@@ -171,25 +154,27 @@
 }
 
 .search-results-container {
-  width: 300px;
-  z-index: 999;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 80px;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0px; /* Removed margin-bottom */
+  margin-top: 20px;
   position: absolute; /* Changed to absolute */
-  bottom: 100%; /* Position above the search bar */
+  bottom: 80px; /* Position above the search bar */
   left: 50%;
   transform: translateX(-50%);
+  z-index: 99; /* Ensure it's above the search bar */
 }
 
 .search-results {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Allow items to wrap to the next line */
-  max-width: 500px; /* Limit the width of the results container */
+  flex-wrap: wrap;
+  max-width: 700px;
+  width: 100%;
 }
 
 .color-swatch {
@@ -198,7 +183,20 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  animation: floatAnimation 3s ease-in-out infinite; /* Add floating animation */
+  animation: popIn 0.25s ease-out forwards; /* Apply popIn to all cards */
+  transform-origin: center bottom;
+}
+
+.color-swatch:nth-child(1) {
+  animation-name: floatAndSwingAnimation1, popIn; /* Apply both animations */
+}
+
+.color-swatch:nth-child(2) {
+  animation-name: floatAndSwingAnimation2, popIn; /* Apply both animations */
+}
+
+.color-swatch:nth-child(3) {
+  animation-name: floatAndSwingAnimation3, popIn; /* Apply both animations */
 }
 
 .color-block {
@@ -232,15 +230,92 @@
   color: black;
 }
 
-/* Floating animation */
-@keyframes floatAnimation {
-  0% {
-    transform: translateY(0);
+/* Floating and Swinging animation */
+@keyframes floatAndSwingAnimation1 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(2deg); /* Animation handles transform */
+  }
+  25% {
+    transform: translateY(-1px) rotate(-2deg); /* Animation handles transform */
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(0px) rotate(2deg); /* Animation handles transform */
+  }
+  75% {
+    transform: translateY(-1px) rotate(-2deg); /* Animation handles transform */
+  }
+}
+
+@keyframes floatAndSwingAnimation2 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg); /* Animation handles transform */
+  }
+  25% {
+    transform: translateY(-1px) rotate(2deg); /* Animation handles transform */
+  }
+  50% {
+    transform: translateY(0px) rotate(-2deg); /* Animation handles transform */
+  }
+  75% {
+    transform: translateY(-1px) rotate(2deg); /* Animation handles transform */
+  }
+}
+
+@keyframes floatAndSwingAnimation3 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(1deg); /* Animation handles transform */
+  }
+  25% {
+    transform: translateY(-1px) rotate(-1deg); /* Animation handles transform */
+  }
+  50% {
+    transform: translateY(0px) rotate(1deg); /* Animation handles transform */
+  }
+  75% {
+    transform: translateY(-1px) rotate(-1deg); /* Animation handles transform */
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(50px);
   }
   100% {
-    transform: translateY(0);
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
+}
+
+.color-swatch.pop-out {
+  animation: popOut 0.6s ease-in forwards;
+}
+
+@keyframes popOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translateY(50px);
+  }
+}
+
+.color-swatch:nth-child(1) {
+  animation-name: floatAndSwingAnimation1, popIn;
+  transform: rotate(2deg);
+}
+
+.color-swatch:nth-child(2) {
+  animation-name: floatAndSwingAnimation2, popIn;
+  transform: rotate(-2deg);
+}
+
+.color-swatch:nth-child(3) {
+  animation-name: floatAndSwingAnimation3, popIn;
+  transform: rotate(1deg);
 }

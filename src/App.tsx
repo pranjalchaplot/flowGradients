@@ -66,7 +66,7 @@ function App() {
             setSearchTerm("");
             setSearchResults([]);
           }
-        }, 1000);
+        }, 500);
 
         return () => clearTimeout(timeoutId);
       } else {
