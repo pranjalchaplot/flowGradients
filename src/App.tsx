@@ -4,10 +4,19 @@ import "./navbar.css";
 import "./gradient.css";
 import GradientVideoDownloader from "./widgets/gradient_video_downloader";
 import ColorSwatch from "./components/colorcard"; // Import the ColorSwatch component
+import colorData from "./data/colors.json"; // Import the color data
+
+interface Color {
+  name: string;
+  code: string;
+  hex: string;
+}
 
 function App() {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [isEnterPressed, setIsEnterPressed] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<Color[]>([]);
   const svgRef = useRef<SVGSVGElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -17,6 +26,21 @@ function App() {
 
   const handleInputBlur = () => {
     setIsInputFocused(false);
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const term = event.target.value;
+    setSearchTerm(term);
+    if (term.trim() !== "") {
+      const results = colorData
+        .filter((color) =>
+          color.name.toLowerCase().includes(term.toLowerCase())
+        )
+        .slice(0, 4); // Limit results to the first 4
+      setSearchResults(results);
+    } else {
+      setSearchResults([]);
+    }
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -39,6 +63,8 @@ function App() {
           setIsEnterPressed(false);
           if (inputRef.current) {
             inputRef.current.value = "";
+            setSearchTerm("");
+            setSearchResults([]);
           }
         }, 1000);
 
@@ -52,40 +78,56 @@ function App() {
 
   return (
     <div className="App">
-      {/* <ColorSwatch /> */}
+      <div className="logo">FLOW.</div>
+      <div className="search-results-container">
+        {searchResults.length > 0 && (
+          <div className="search-results">
+            {searchResults.map((color) => (
+              <ColorSwatch
+                key={color.code}
+                colorName={color.name}
+                colorCode={color.code}
+                hexCode={color.hex}
+              />
+            ))}
+          </div>
+        )}
+      </div>
       <div className="search-container">
         <input
           type="text"
-          placeholder="Hey! spill some colors here..."
+          placeholder="Add Colors"
           id="searchInput"
-          style={{ width: "300px" }}
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
           onKeyDown={handleKeyPress}
+          onChange={handleInputChange}
           ref={inputRef}
         />
-        <svg
-          ref={svgRef}
-          width="24px"
-          height="24px"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          color="#ffffff"
-          strokeWidth="1.5"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM9.87884 8.42139H14.8286C15.0206 8.42139 15.2125 8.49461 15.3589 8.64106C15.4309 8.71296 15.4851 8.79584 15.5217 8.8843C15.5584 8.97273 15.5786 9.06969 15.5786 9.17139V14.1212C15.5786 14.5354 15.2428 14.8712 14.8286 14.8712C14.4144 14.8712 14.0786 14.5354 14.0786 14.1212V10.982L9.70207 15.3586C9.40918 15.6515 8.93431 15.6515 8.64141 15.3586C8.34852 15.0657 8.34852 14.5908 8.64141 14.2979L13.018 9.92139H9.87884C9.46463 9.92139 9.12884 9.5856 9.12884 9.17139C9.12884 8.75717 9.46463 8.42139 9.87884 8.42139Z"
-            fill="#ffffff"
-          ></path>
-        </svg>
+        <div className="search-icon">
+          <svg
+            ref={svgRef}
+            width="24px"
+            height="24px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            color="#ffffff"
+            strokeWidth="1.5"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM9.87884 8.42139H14.8286C15.0206 8.42139 15.2125 8.49461 15.3589 8.64106C15.4309 8.71296 15.4851 8.79584 15.5217 8.8843C15.5584 8.97273 15.5786 9.06969 15.5786 9.17139V14.1212C15.5786 14.5354 15.2428 14.8712 14.8286 14.8712C14.4144 14.8712 14.0786 14.5354 14.0786 14.1212V10.982L9.70207 15.3586C9.40918 15.6515 8.93431 15.6515 8.64141 15.3586C8.34852 15.0657 8.34852 14.5908 8.64141 14.2979L13.018 9.92139H9.87884C9.46463 9.92139 9.12884 9.5856 9.12884 9.17139C9.12884 8.75717 9.46463 8.42139 9.87884 8.42139Z"
+              fill="#ffffff"
+            ></path>
+          </svg>
+        </div>
       </div>
-      <div className="title-bar">
-        {/* <div className="logo"></div> */}
-        {/* <GradientVideoDownloader duration={10} /> */}
-      </div>
+      {/* <div className="title-bar">
+        <div className="logo"></div>
+        <GradientVideoDownloader duration={10} />
+      </div> */}
     </div>
   );
 }

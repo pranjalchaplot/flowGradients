@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Peach Fuzz",
+    "code": "13-1023",
+    "hex": "#FFBE98"
+  },
+  {
+    "name": "Sky Blue",
+    "code": "15-4020",
+    "hex": "#87CEEB"
+  },
+  {
+    "name": "Forest Green",
+    "code": "19-5620",
+    "hex": "#228B22"
+  },
+  {
+    "name": "Crimson Red",
+    "code": "19-1662",
+    "hex": "#DC143C"
+  },
+  {
+    "name": "Golden Yellow",
+    "code": "14-0952",
+    "hex": "#FFD700"
+  },
+  {
+    "name": "Lavender Purple",
+    "code": "16-3930",
+    "hex": "#E6E6FA"
+  },
+  {
+    "name": "Ocean Blue",
+    "code": "18-4042",
+    "hex": "#006994"
+  },
+  {
+    "name": "Burnt Orange",
+    "code": "17-1449",
+    "hex": "#CC5500"
+  },
+  {
+    "name": "Mint Green",
+    "code": "15-5519",
+    "hex": "#98FF98"
+  },
+  {
+    "name": "Rose Pink",
+    "code": "17-1928",
+    "hex": "#FFC0CB"
+  },
+  {
+    "name": "Charcoal Gray",
+    "code": "19-0303",
+    "hex": "#36454F"
+  },
+  {
+    "name": "Turquoise",
+    "code": "15-5217",
+    "hex": "#40E0D0"
+  },
+  {
+    "name": "Beige",
+    "code": "14-1118",
+    "hex": "#F5F5DC"
+  },
+  {
+    "name": "Maroon",
+    "code": "19-1524",
+    "hex": "#800000"
+  },
+  {
+    "name": "Teal",
+    "code": "17-4930",
+    "hex": "#008080"
+  },
+  {
+    "name": "Mustard",
+    "code": "14-0955",
+    "hex": "#FFDB58"
+  },
+  {
+    "name": "Olive",
+    "code": "17-0530",
+    "hex": "#808000"
+  },
+  {
+    "name": "Coral",
+    "code": "16-1546",
+    "hex": "#FF7F50"
+  },
+  {
+    "name": "Indigo",
+    "code": "19-3955",
+    "hex": "#4B0082"
+  },
+  {
+    "name": "Silver",
+    "code": "17-0000",
+    "hex": "#C0C0C0"
+  }
+]

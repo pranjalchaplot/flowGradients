@@ -1,9 +1,16 @@
+// colorcard.tsx
 import "../App.css";
 
-const ColorSwatch = ({
-  colorName = "Peach Fuzz",
-  colorCode = "13-1023",
-  hexCode = "#FFBE98",
+interface ColorSwatchProps {
+  colorName: string;
+  colorCode: string;
+  hexCode: string;
+}
+
+const ColorSwatch: React.FC<ColorSwatchProps> = ({
+  colorName,
+  colorCode,
+  hexCode,
 }) => {
   return (
     <div className="color-swatch">
