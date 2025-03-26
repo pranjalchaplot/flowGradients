@@ -13,12 +13,13 @@ interface Color {
 }
 
 function App() {
-  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [, setIsInputFocused] = useState(false);
   const [isEnterPressed, setIsEnterPressed] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Color[]>([]);
   const svgRef = useRef<SVGSVGElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [selectedColors, setSelectedColors] = useState<Color[]>([]);
 
   const handleInputFocus = () => {
     setIsInputFocused(true);
@@ -76,6 +77,46 @@ function App() {
     }
   }, [isEnterPressed]);
 
+  const handleColorClick = (color: Color) => {
+    setSelectedColors((prevColors) => {
+      const updatedColors = [...prevColors];
+      const colorIndex = updatedColors.findIndex((c) => c.code === color.code);
+
+      if (colorIndex !== -1) {
+        // Color already selected, remove it
+        updatedColors.splice(colorIndex, 1);
+      } else {
+        // Color not selected, add it
+        updatedColors.push(color);
+        if (updatedColors.length > 3) {
+          updatedColors.shift(); // Remove the oldest color if more than 3 are selected
+        }
+      }
+      updateGradientBackground(updatedColors);
+      return updatedColors;
+    });
+  };
+
+  const updateGradientBackground = (colors: Color[]) => {
+    const body = document.body;
+    if (body) {
+      if (colors.length > 0) {
+        const gradientString = colors.map((color) => color.hex).join(", ");
+        body.style.background = `linear-gradient(45deg, ${gradientString})`;
+        body.style.backgroundSize = "200% 200%";
+        body.style.animation = "gradient 10s ease infinite";
+      } else {
+        body.style.background = `linear-gradient(45deg, #871b1b, #e12626)`;
+        body.style.backgroundSize = "200% 200%";
+        body.style.animation = "gradient 10s ease infinite";
+      }
+    }
+  };
+
+  useEffect(() => {
+    updateGradientBackground(selectedColors);
+  }, [selectedColors]);
+
   return (
     <div className="App">
       <div className="logo">FLOW.</div>
@@ -83,12 +124,18 @@ function App() {
         {searchResults.length > 0 && (
           <div className="search-results">
             {searchResults.map((color) => (
-              <ColorSwatch
+              <div
+                className={`search-result-item`}
                 key={color.code}
-                colorName={color.name}
-                colorCode={color.code}
-                hexCode={color.hex}
-              />
+                onClick={() => handleColorClick(color)}
+              >
+                <ColorSwatch
+                  colorName={color.name}
+                  colorCode={color.code}
+                  hexCode={color.hex}
+                  isSelected={selectedColors.some((c) => c.code === color.code)}
+                />
+              </div>
             ))}
           </div>
         )}

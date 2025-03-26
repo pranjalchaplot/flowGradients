@@ -5,6 +5,7 @@ interface ColorSwatchProps {
   colorName: string;
   colorCode: string;
   hexCode: string;
+  isSelected: boolean;
 }
 
 const ColorSwatch: React.FC<ColorSwatchProps> = ({

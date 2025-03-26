@@ -1,102 +1,102 @@
 [
   {
     "name": "Peach Fuzz",
-    "code": "13-1023",
+    "code": "#FFBE98",
     "hex": "#FFBE98"
   },
   {
     "name": "Sky Blue",
-    "code": "15-4020",
+    "code": "#87CEEB",
     "hex": "#87CEEB"
   },
   {
     "name": "Forest Green",
-    "code": "19-5620",
+    "code": "#228B22",
     "hex": "#228B22"
   },
   {
     "name": "Crimson Red",
-    "code": "19-1662",
+    "code": "#DC143C",
     "hex": "#DC143C"
   },
   {
     "name": "Golden Yellow",
-    "code": "14-0952",
+    "code": "#FFD700",
     "hex": "#FFD700"
   },
   {
     "name": "Lavender Purple",
-    "code": "16-3930",
+    "code": "#E6E6FA",
     "hex": "#E6E6FA"
   },
   {
     "name": "Ocean Blue",
-    "code": "18-4042",
+    "code": "#006994",
     "hex": "#006994"
   },
   {
     "name": "Burnt Orange",
-    "code": "17-1449",
+    "code": "#CC5500",
     "hex": "#CC5500"
   },
   {
     "name": "Mint Green",
-    "code": "15-5519",
+    "code": "#98FF98",
     "hex": "#98FF98"
   },
   {
     "name": "Rose Pink",
-    "code": "17-1928",
+    "code": "#FFC0CB",
     "hex": "#FFC0CB"
   },
   {
     "name": "Charcoal Gray",
-    "code": "19-0303",
+    "code": "#36454F",
     "hex": "#36454F"
   },
   {
     "name": "Turquoise",
-    "code": "15-5217",
+    "code": "#40E0D0",
     "hex": "#40E0D0"
   },
   {
     "name": "Beige",
-    "code": "14-1118",
+    "code": "#F5F5DC",
     "hex": "#F5F5DC"
   },
   {
     "name": "Maroon",
-    "code": "19-1524",
+    "code": "#800000",
     "hex": "#800000"
   },
   {
     "name": "Teal",
-    "code": "17-4930",
+    "code": "#008080",
     "hex": "#008080"
   },
   {
     "name": "Mustard",
-    "code": "14-0955",
+    "code": "#FFDB58",
     "hex": "#FFDB58"
   },
   {
     "name": "Olive",
-    "code": "17-0530",
+    "code": "#808000",
     "hex": "#808000"
   },
   {
     "name": "Coral",
-    "code": "16-1546",
+    "code": "#FF7F50",
     "hex": "#FF7F50"
   },
   {
     "name": "Indigo",
-    "code": "19-3955",
+    "code": "#4B0082",
     "hex": "#4B0082"
   },
   {
     "name": "Silver",
-    "code": "17-0000",
+    "code": "#C0C0C0",
     "hex": "#C0C0C0"
   }
 ]
