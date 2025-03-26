@@ -363,3 +363,77 @@
     transform: scale(0.5) translateY(50px);
   }
 }
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .search-container {
+    bottom: 15px;
+    width: 95%;
+    max-width: 400px;
+  }
+
+  #searchInput {
+    width: 100%; /* Take up full width within the container */
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  .search-results-container {
+    bottom: 65px;
+  }
+
+  .search-results {
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .color-swatch {
+    width: 90px;
+  }
+
+  .color-block {
+    height: 60px;
+  }
+
+  .pantone-text {
+    font-size: 8px;
+  }
+
+  .color-code {
+    font-size: 7px;
+  }
+
+  .color-name {
+    font-size: 7px;
+  }
+  .color-swatch:hover {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    max-width: 300px;
+  }
+  .search-results-container {
+    bottom: 60px;
+  }
+  .search-results {
+    gap: 5px;
+  }
+  .color-swatch {
+    width: 70px;
+  }
+  .color-block {
+    height: 50px;
+  }
+}
