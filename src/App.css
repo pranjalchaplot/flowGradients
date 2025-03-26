@@ -214,12 +214,11 @@
 
 .color-swatch {
   width: 120px;
-  background-color: white;
+  /* background-color: white;  remove this line*/
+  background: linear-gradient(135deg, #e0dede, #ffffff); /* Add this line */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  /* animation: popIn 0.5s ease-out forwards; */
-  /* animation-delay: 0s, 0.3s; */
   transform-origin: center bottom;
   cursor: pointer;
   transition: transform 0.2s ease;
